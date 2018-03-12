@@ -23,4 +23,16 @@ public class MyDate {
     public int getYear() {
         return year;
     }
+    
+    public int compareTo(MyDate date) {
+        if (this.year - date.year != 0) {
+            return this.year - date.year;
+        }
+        
+        if (this.month - date.month != 0) {
+            return this.month - date.month;
+        }
+        
+        return this.day - date.day;
+    }
 }

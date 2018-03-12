@@ -1,5 +1,8 @@
 package Utils;
 
+import Location.City;
+import Location.Country;
+import Location.County;
 import Location.Location;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,37 +13,146 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Application {
-    private Map<String, Map<String, Map<String, List<Location>>>> locations;
+    private Map<String, Set<Location>> locations;
+    private Map<String, Set<City>> cities;
+    private Map<String, Set<County>> counties;
+    private Map<String, Set<Country>> countries;
     private Map<String, Set<Location>> placesForActivity;
     
     public Application() {
-        this.locations = new LinkedHashMap<String, Map<String, Map<String, List<Location>>>>();
+        this.locations = new LinkedHashMap<String, Set<Location>>();
+        this.cities = new LinkedHashMap<String, Set<City>>();
+        this.counties = new LinkedHashMap<String, Set<County>>();
+        this.countries = new LinkedHashMap<String, Set<Country>>();
         this.placesForActivity = new LinkedHashMap<String, Set<Location>>();
     }
     
     public void addLocation(Location location) {
-        String country = location.getCountry();
-        String county = location.getCounty();
-        String city = location.getCity();
+        String hashcode = location.getName()
+                .toLowerCase()
+                .substring(0, 1);
         
-        if (locations.containsKey(country) == false) {
-            locations.put(country, new LinkedHashMap<String, Map<String, List<Location>>>());
+        if (locations.containsKey(hashcode) == false) {
+            locations.put(hashcode, 
+                    new TreeSet<Location>(NameComparator.getInstance()));
         }
-        if (locations.get(country).containsKey(county) == false) {
-            locations.get(country).put(county, new LinkedHashMap<String, List<Location>>());
-        }
-        if (locations.get(country).get(county).containsKey(city) == false) {
-            locations.get(country).get(county).put(city, new ArrayList<Location>());
-        }
-        locations.get(country).get(county).get(city).add(location);
+        locations.get(hashcode).add(location);
         
         for (String activity : location.getActivities()) {
             String formatted = activity.toLowerCase();
+            
             if (placesForActivity.containsKey(formatted) == false) {
-                placesForActivity.put(formatted, new TreeSet<Location>(new PriceComparator()));
+                placesForActivity.put(formatted, 
+                        new TreeSet<Location>(PriceComparator.getInstance()));
             }
             placesForActivity.get(formatted).add(location);
         }
+        
+        String cityName = location.getCityName();
+        String countyName = location.getCountyName();
+        String countryName = location.getCountryName();
+        
+        hashcode = location.getCityName()
+                .toLowerCase()
+                .substring(0, 1);
+        
+        if (cities.containsKey(hashcode) == false) {
+            cities.put(hashcode, 
+                    new TreeSet<City>(NameComparator.getInstance()));
+        }
+        
+        City city = findCity(cityName.toLowerCase());
+        
+        if (city == null) {
+            city = new City(countryName, countyName, cityName);
+            cities.get(hashcode).add(city);
+        }
+        city.addLocation(location);
+        
+        hashcode = location.getCountyName()
+                .toLowerCase()
+                .substring(0, 1);
+        
+        if (counties.containsKey(hashcode) == false) {
+            counties.put(hashcode, 
+                    new TreeSet<County>(NameComparator.getInstance()));
+        }
+        
+        County county = findCounty(countyName.toLowerCase());
+        
+        if (county == null) {
+            county = new County(countryName, countyName);
+            counties.get(hashcode).add(county);
+        }
+        county.addLocation(location);
+        
+        hashcode = location.getCountryName()
+                .toLowerCase()
+                .substring(0, 1);
+        
+        if (countries.containsKey(hashcode) == false) {
+            countries.put(hashcode, 
+                    new TreeSet<Country>(NameComparator.getInstance()));
+        }
+        
+        Country country = findCountry(countryName.toLowerCase());
+        
+        if (country == null) {
+            country = new Country(countryName);
+            countries.get(hashcode).add(country); 
+        }       
+        country.addLocation(location);
+    }
+    
+    public City findCity(String cityName) {
+        String hashcode = cityName.toLowerCase()
+                .substring(0, 1);
+        
+        for (City c : cities.get(hashcode)) {
+            if (c.getName().toLowerCase()
+                    .compareTo(cityName) == 0) {
+                return c;
+            }
+            else if (c.getName().toLowerCase()
+                    .compareTo(cityName) > 0) {
+                return null;
+            }
+        }
+        return null;
+    }
+    
+    public Country findCountry(String countryName) {
+        String hashcode = countryName.toLowerCase()
+                .substring(0, 1);
+        
+        for (Country c : countries.get(hashcode)) {
+            if (c.getName().toLowerCase()
+                    .compareTo(countryName) == 0) {
+                return c;
+            }
+            else if (c.getName().toLowerCase()
+                    .compareTo(countryName) > 0) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public County findCounty(String countyName) {
+        String hashcode = countyName.toLowerCase()
+                .substring(0, 1);
+        
+        for (County c : counties.get(hashcode)) {
+            if (c.getName().toLowerCase()
+                    .compareTo(countyName) == 0) {
+                return c;
+            }
+            else if (c.getName().toLowerCase()
+                    .compareTo(countyName) > 0) {
+                return null;
+            }
+        }
+        return null;
     }
     
     public void getCheapestPlace(String activity) {
@@ -50,7 +162,8 @@ public class Application {
             Iterator<Location> it = list.iterator();
             Location loc = it.next();
             double price = loc.getPrice();
-            getInfo(loc.getName());
+           
+            getInfo(loc.getName().toLowerCase());
             
             while (it.hasNext()) {
                 loc = it.next();
@@ -58,47 +171,104 @@ public class Application {
                     break;
                 }
                 System.out.println();
-                getInfo(loc.getName());
-            }
-                        
+                getInfo(loc.getName().toLowerCase());
+            }      
             System.out.println("TOTAL PRICE: " + price * 10);
         }
         else {
-            System.out.println("There is no where you can practice this activity! :(");
+            System.out.println("There is no where you can "
+                    + "practice this activity! :(");
         }
     }
     
-    public void getInfo(String name) {
-        Character index = name.toUpperCase().charAt(0);
-        Location location = null;
-        List<Location> list = locations.get(index);
+    public void getInfo(String locationName) {
+        if (locationName.length() == 0) {
+            System.out.println("Inexistent location!");
+            return;
+        }
+        
+        boolean found = false;
+        String hashcode = locationName.toLowerCase()
+                .substring(0, 1);
+        Set<Location> list = locations.get(hashcode);
         
         if (list != null) {
-            for (Location loc : list) {
-                if (loc.getName().toLowerCase().compareTo(name.toLowerCase()) == 0) {
-                    location = loc;
+            for (Location location : list) {
+                String locName = location.getName()
+                        .toLowerCase();
+
+                if (locName.compareTo(locationName) == 0) {
+                    found = true;
+                    location.printDetails();
+                }
+
+                if (locName.compareTo(locationName) > 0) {
                     break;
                 }
             }
         }
         
-        if (location == null) {
+        if (found == false) {
             System.out.println("Inexistent location!");
         }
-        else {
-            System.out.println("Name: " + location.getName());
-            System.out.println("City: " + location.getCity());
-            System.out.println("County: " + location.getCounty());
-            System.out.println("Country: " + location.getCountry());
-            System.out.println("Average price per day: " + location.getPrice() + " lei");
-            
-            List<String> activities = location.getActivities();
-            String result = "";
-            for (String activity : activities) {
-                result = result.concat(activity + ", ");
+    }
+        
+    public void top5City(String cityName, MyDate start, MyDate end) {
+        City city = this.findCity(cityName);
+        Set<Location> top = city.getTop();
+        showTop5(top, start, end);
+    }
+    
+    public void top5County(String countyName, MyDate start, MyDate end) {
+        County county = this.findCounty(countyName);
+        Set<Location> top = county.getTop();
+        showTop5(top, start, end);
+    }
+        
+    public void top5Country(String countryName, MyDate start, MyDate end) {
+        Country country = this.findCountry(countryName);
+        Set<Location> top = country.getTop();
+        showTop5(top, start, end);
+    }
+    
+    public void showTop5(Set<Location> topLocations, 
+            MyDate startDate, MyDate endDate) {
+        int counter = 0;
+        boolean overEndDate = false, overStartDate = false;
+        List<Location> result = new ArrayList<Location>();
+        
+        for (Location loc : topLocations) {
+            if (loc.getStartDate().compareTo(startDate) <= 0 &&
+                    loc.getEndDate().compareTo(startDate) > 0) {
+                result.add(loc);
+                counter++;
+                
+                if (loc.getEndDate().compareTo(endDate) <= 0) {
+                    if (overEndDate == false) {
+                        overEndDate = true;
+                        System.out.println("At least one offer ends earlier!");
+                    }
+                    counter--;
+                }                
             }
-            System.out.println("Activities: " + result.substring(0, result.length() - 2));
-            System.out.println("Available period: " + location.getPeriod());
+            else if (loc.getStartDate().compareTo(endDate) < 0 &&
+                        loc.getEndDate().compareTo(endDate) >= 0) {
+                result.add(loc);
+                
+                if (overStartDate == false) {
+                    overStartDate = true;
+                    System.out.println("At least one offer begins later!");
+                }
+            }
+            
+            if (counter == 5) {
+                break;
+            }
+        }
+        
+        for (Location loc : result) {
+            loc.printDetails();
+            System.out.println("");
         }
     }
 }

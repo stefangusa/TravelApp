@@ -2,6 +2,7 @@
 import Utils.Application;
 import Utils.MyDate;
 import Location.Location;
+import static Utils.Parser.parseTop5;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -51,13 +52,16 @@ public class Main {
         System.out.println("============ WELCOME ! =============");
         System.out.println("Commands: ");
         System.out.println("info - Reveals information about a location.");
-        System.out.println("top5 - Shows the top 5 offers in a city/county/country.");
-        System.out.println("ten-day - Reveals the location having the cheapest cost for a 10-day trip.");
+        System.out.println("top5 - Shows the top 5 offers in a "
+                + "city/county/country.");
+        System.out.println("ten-day - Reveals the location having "
+                + "the cheapest cost for a 10-day trip.");
         System.out.println("exit: Close the application.");
         
         while (true) {
             System.out.println();
-            System.out.println("Insert one command (info, top5, ten-day, exit): ");
+            System.out.println("Insert one command (info, "
+                    + "top5, ten-day, exit): ");
             
             Scanner sc = new Scanner(System.in);
             String command = sc.nextLine();
@@ -65,34 +69,26 @@ public class Main {
             switch (command.toLowerCase()) {
                 case "info":
                     System.out.println("Insert a location: ");
-                    app.getInfo(sc.nextLine());
+                    app.getInfo(sc.nextLine().toLowerCase());
                     break;
                     
                 case "top5":
-                    System.out.println("Choose 1 - for country");
-                    System.out.println("2 - for county");
-                    System.out.println("3 - for city");
-                    if (sc.nextInt() == 1) {
-                        app.top5Country(sc.nextLine());
-                    }
-                    else if (sc.nextInt() == 2) {
-                        app.top5County(sc.nextLine());
-                    }
-                    else if (sc.nextInt() == 3) {
-                        app.top5City(sc.nextLine());
-                    }
-                    else {
-                        System.out.println("Invalid Argument!");
-                    }
+                    parseTop5(app, sc);
+                    System.out.println("");
+                    break;
+                    
                 case "ten-day":
                     System.out.println("Insert an activity: ");
-                    app.getCheapestPlace(sc.nextLine());
+                    app.getCheapestPlace(sc.nextLine().toLowerCase());
                     break;
                     
                 case "exit":
                     System.out.println("Thank you for using our product!");
                     System.exit(0);
                     break;
+                
+                default:
+                    System.out.println("Inexistent command");
             }          
         }
     }
