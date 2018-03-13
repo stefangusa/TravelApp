@@ -6,9 +6,9 @@ import java.util.Comparator;
 /* Singleton class that comparest two cities by their name   */
 public class CityComparator implements Comparator<City> {
 
-    private static CountyComparator p = new CountyComparator();
+    private static CityComparator p = new CityComparator();
     
-    public static CountyComparator getInstance() {
+    public static CityComparator getInstance() {
         return p;
     }
     
