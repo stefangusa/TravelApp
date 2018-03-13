@@ -1,6 +1,7 @@
 package Utils;
 
-
+/*  Class MyDate - creates a date only with day, month, year
+    and no constraints (should be previously checked if the date exists)    */
 public class MyDate {
     private final int day;
     private final int month;
@@ -24,6 +25,7 @@ public class MyDate {
         return year;
     }
     
+    /*  Compares two dates  */
     public int compareTo(MyDate date) {
         if (this.year - date.year != 0) {
             return this.year - date.year;

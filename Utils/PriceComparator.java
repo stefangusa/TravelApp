@@ -3,6 +3,7 @@ package Utils;
 import Location.Location;
 import java.util.Comparator;
 
+/* Singleton class with a method that compares the prices of two locations  */
 public class PriceComparator implements Comparator<Location> {
 
     private static PriceComparator p = new PriceComparator();

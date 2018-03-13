@@ -4,13 +4,16 @@ import Utils.MyDate;
 import java.util.Arrays;
 import java.util.List;
 
+/*  Location class */
 public class Location extends City {
-    private String name;
-    private double price;
-    private List<String> activities;
-    private MyDate startDate;
+    private final String name;
+    private final double price;
+    private final List<String> activities;
+    private final MyDate startDate;
     private MyDate endDate;
     
+    /*  Calls the constructor of city, county and then country before 
+        setting up local variables    */
     public Location(String countryName, String countyName,
                     String cityName, String locationName,
                     double averagePrice, String[] activities,
@@ -23,10 +26,41 @@ public class Location extends City {
         this.endDate = endDate;
     }
        
+    /*  Method that returns activities in a location */
     public List<String> getActivities() {
         return this.activities;
     }
+        
+   /* Method that returns city's (where the location is) name  */
+    public String getCityName() {
+        return super.getName();
+    }
     
+   /* Method that returns county's (where the location is) name  */
+    @Override
+    public String getCountyName() {
+        return super.getCountyName();
+    }
+    
+   /* Method that returns country's (where the location is) name  */
+    @Override
+    public String getCountryName() {
+        return super.getCountryName();
+    }
+    
+    /*  Method that returns the last day in the offer  */
+    public MyDate getEndDate() {
+        return this.endDate;
+    }
+    
+    /* Method that returns location's name  */
+    @Override
+    public String getName() {
+        return this.name;
+    }
+    
+    
+    /*  Method that returns the available period as a String    */
     public String getPeriod() {
         String result = String.valueOf(startDate.getDay());
         
@@ -38,36 +72,17 @@ public class Location extends City {
         return result;       
     }
      
+    /*  Method that returns the price   */
     public double getPrice() {
         return this.price;
     }
     
+    /*  Method that returns the first day in the offer  */
     public MyDate getStartDate() {
         return this.startDate;
     }
     
-    public MyDate getEndDate() {
-        return this.endDate;
-    }
-    
-    @Override
-    public String getName() {
-        return this.name;
-    }
-    
-    public String getCityName() {
-        return super.getName();
-    }
-    
-    @Override
-    public String getCountyName() {
-        return super.getCountyName();
-    }
-    
-    public String getCountryName() {
-        return super.getCountryName();
-    }
-    
+    /*  Method that prints the details of the offer */
     public void printDetails() {
         System.out.println("Name: " + getName());
         System.out.println("City: " + getCityName());
