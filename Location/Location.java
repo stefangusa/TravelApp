@@ -5,10 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /*  Location class */
-public class Location {
-    private final String cityName;
-    private final String countryName;
-    private final String countyName;
+public class Location extends City {
     private final String name;
     private final double price;
     private final List<String> activities;
@@ -21,9 +18,7 @@ public class Location {
                     String cityName, String locationName,
                     double averagePrice, String[] activities,
                     MyDate startDate, MyDate endDate) {
-        this.cityName = cityName;
-        this.countryName = countryName;
-        this.countyName = countyName;
+        super(countryName, countyName, cityName);
         this.name = locationName;
         this.price = averagePrice;
         this.activities = Arrays.asList(activities);
@@ -38,17 +33,19 @@ public class Location {
         
    /* Method that returns city's (where the location is) name  */
     public String getCityName() {
-        return this.cityName;
+        return super.getName();
     }
     
    /* Method that returns county's (where the location is) name  */
+    @Override
     public String getCountyName() {
-        return this.countyName;
+        return super.getCountyName();
     }
     
    /* Method that returns country's (where the location is) name  */
+    @Override
     public String getCountryName() {
-        return this.countryName;
+        return super.getCountryName();
     }
     
     /*  Method that returns the last day in the offer  */
@@ -57,6 +54,7 @@ public class Location {
     }
     
     /* Method that returns location's name  */
+    @Override
     public String getName() {
         return this.name;
     }

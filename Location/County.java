@@ -5,35 +5,37 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /* County class - with its name and top locations by price    */
-public class County {
-    private final String countryName;
+public class County extends Country {
     private final String name;
     private Set<Location> topLocations;
     
     /*  Calls the constructor of county before 
         setting up local variables    */
     public County(String countryName, String countyName) {
-        this.countryName = countryName;
+        super(countryName);
         this.name = countyName;
         this.topLocations = new TreeSet<Location>(PriceComparator.getInstance());
     }
     
     /* Method that adds a location to the topLocations  */
+    @Override
     public void addLocation(Location location) {
         this.topLocations.add(location);
     }
     
     /* Method that returns county's name  */
+    @Override
     public String getName() {
         return this.name;
     }
  
     /* Method that returns country's (where the county is) name  */
     public String getCountryName() {
-        return this.countryName;
+        return super.getName();
     }
 
     /* Method that returns topLocations set */    
+    @Override
     public Set<Location> getTop() {
         return this.topLocations;
     }

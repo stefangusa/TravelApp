@@ -71,14 +71,13 @@ public class Main {
         System.out.println("exit: Close the application.");
         
         /* the application loop */
-
-        Scanner sc = new Scanner(System.in);
         while (true) {
             /* first insert a command   */
             System.out.println();
             System.out.println("Insert one command (info, "
                     + "top5, ten-day, exit): ");
             
+            Scanner sc = new Scanner(System.in);
             String command = sc.nextLine();
             
             /* execute the command taken    */
@@ -92,6 +91,7 @@ public class Main {
                 /*  parses the input with a specific method and prints the top5 */    
                 case "top5":
                     parseTop5(app, sc);
+                    System.out.println("");
                     break;
                     
                 /*  requires an activity and prints details of the place 
