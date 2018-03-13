@@ -44,10 +44,6 @@ Am ales stocarea locatiilor, oraselor, judetelor si tarilor printr-un hashmap
 cu cheia prima litera pentru acces mai rapid, hash ce poate fi ajustat la 
 primele 2-3-n litere in cazul introducerii foarte multor inregistrari.
 
-Structura ierarhica a fost alcatuita prin mostenire (locatie < oras < judet <
-tara) si pot fi adaugate usor sate sau comune care sa extinda un judet, de 
-exemplu.
-
 Nu am folosit liste, ci seturi ordonate crescator dupa nume sau dupa pret 
 (in functie de caz) pentru a dura mai putin accesul la informatii in timpul 
 interactiunii cu clientul (chiar daca timpul de inserare este mai mare - 
