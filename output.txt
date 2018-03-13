@@ -1,0 +1,184 @@
+============ WELCOME ! =============
+Commands: 
+info - Reveals information about a location.
+top5 - Shows the top 5 offers in a city/county/country.
+ten-day - Reveals the location having the cheapest cost for a 10-day trip.
+exit: Close the application.
+
+Insert one command (info, top5, ten-day, exit): 
+Insert a location: 
+Name: Hotel Continental
+City: Sinaia
+County: Prahova
+Country: Romania
+Average price per day: 130.0 lei
+Activities: tur cultural, vizitarea Castelului Peles
+Available period: 1.1.2018 - 31.12.2018
+
+Insert one command (info, top5, ten-day, exit): 
+Insert an activity: 
+Name: Pensiunea Mara
+City: Turda
+County: Cluj
+Country: Romania
+Average price per day: 90.0 lei
+Activities: salina, tur cultural, drumetii
+Available period: 1.5.2018 - 30.9.2018
+TOTAL PRICE: 900.0
+
+Insert one command (info, top5, ten-day, exit): 
+Insert an activity: 
+There is no where you can practice this activity! :(
+
+Insert one command (info, top5, ten-day, exit): 
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Choose a county: 
+Choose a period: (day, month, year)
+Day in: (numeral)
+Month in: (numeral)
+Year in: (numeral)
+Day out: (numeral)
+Month out: (numeral)
+Year out: (numeral)
+
+Name: Hotel Scoica
+City: Jupiter
+County: Constanta
+Country: Romania
+Average price per day: 145.0 lei
+Activities: plaja, cluburi de noapte
+Available period: 1.6.2018 - 30.6.2018
+
+Name: Hotel Class
+City: Constanta
+County: Constanta
+Country: Romania
+Average price per day: 180.0 lei
+Activities: tur cultural, plaja, cluburi de noapte
+Available period: 1.6.2018 - 15.9.2018
+
+Name: Hotel Vox Maris
+City: Costinesti
+County: Constanta
+Country: Romania
+Average price per day: 180.0 lei
+Activities: plaja, cluburi de noapte
+Available period: 30.5.2018 - 30.9.2018
+
+
+Insert one command (info, top5, ten-day, exit): 
+Insert an activity: 
+Name: Hotel Agnes
+City: Bucuresti
+County: Bucuresti
+Country: Romania
+Average price per day: 120.0 lei
+Activities: tur cultural, cluburi de noapte
+Available period: 1.1.2018 - 31.12.2019
+TOTAL PRICE: 1200.0
+
+Insert one command (info, top5, ten-day, exit): 
+Insert a location: 
+Name: Hotel Unirea
+City: Iasi
+County: Iasi
+Country: Romania
+Average price per day: 130.0 lei
+Activities: tur cultural, vizitarea parcului Copou
+Available period: 1.1.2018 - 31.12.2018
+
+Insert one command (info, top5, ten-day, exit): 
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Please enter 1, 2 or 3!
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Please enter 1, 2 or 3!
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Choose a city: 
+Choose a period: (day, month, year)
+Day in: (numeral)
+Month in: (numeral)
+Year in: (numeral)
+Day out: (numeral)
+Month out: (numeral)
+Year out: (numeral)
+Date out should be later than date in!
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Choose a city: 
+Choose a period: (day, month, year)
+Day in: (numeral)
+Month in: (numeral)
+Year in: (numeral)
+Day out: (numeral)
+Month out: (numeral)
+Year out: (numeral)
+
+Name: Hotel Agnes
+City: Bucuresti
+County: Bucuresti
+Country: Romania
+Average price per day: 120.0 lei
+Activities: tur cultural, cluburi de noapte
+Available period: 1.1.2018 - 31.12.2019
+
+
+Insert one command (info, top5, ten-day, exit): 
+Choose 1 - for country
+2 - for county
+3 - for city
+Your choice: Choose a county: 
+Choose a period: (day, month, year)
+Day in: (numeral)
+Month in: (numeral)
+Year in: (numeral)
+Day out: (numeral)
+Month out: (numeral)
+Year out: (numeral)
+
+At least one offer ends earlier!
+At least one offer begins later!
+Name: Hotel Scoica
+City: Jupiter
+County: Constanta
+Country: Romania
+Average price per day: 145.0 lei
+Activities: plaja, cluburi de noapte
+Available period: 1.6.2018 - 30.6.2018
+
+Name: Hotel Class
+City: Constanta
+County: Constanta
+Country: Romania
+Average price per day: 180.0 lei
+Activities: tur cultural, plaja, cluburi de noapte
+Available period: 1.6.2018 - 15.9.2018
+
+Name: Hotel Vox Maris
+City: Costinesti
+County: Constanta
+Country: Romania
+Average price per day: 180.0 lei
+Activities: plaja, cluburi de noapte
+Available period: 30.5.2018 - 30.9.2018
+
+Name: Hotel Scoica
+City: Jupiter
+County: Constanta
+Country: Romania
+Average price per day: 195.0 lei
+Activities: plaja, cluburi de noapte
+Available period: 1.7.2018 - 31.8.2018
+
+
+Insert one command (info, top5, ten-day, exit): 
+Thank you for using our product!
+

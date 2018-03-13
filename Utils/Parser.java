@@ -139,6 +139,8 @@ public class Parser {
                 System.out.println("Date out should be later than date in!");
                 continue;
             }
+                        
+            System.out.println("");
 
             /* calls the right method according to the option   */
             switch (option) {

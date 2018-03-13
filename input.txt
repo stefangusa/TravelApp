@@ -1,0 +1,12 @@
+Hotel Unirea|Iasi, Iasi, Romania|130|tur cultural, vizitarea parcului Copou|01.01.2018 - 31.12.2018
+Hotel Continental|Sinaia, Prahova, Romania|130|tur cultural, vizitarea Castelului Peles|01.01.2018 - 31.12.2018
+Hotel Caraiman|Busteni, Prahova, Romania|120|schi, drumetii|01.01.2018 - 31.03.2018
+Hotel Caraiman|Busteni, Prahova, Romania|110|vizitare Babele, drumetii|01.04.2018 - 30.09.2018
+Hotel Scoica|Jupiter, Constanta, Romania|145|plaja, cluburi de noapte|01.06.2018 - 30.06.2018
+Hotel Scoica|Jupiter, Constanta, Romania|195|plaja, cluburi de noapte|01.07.2018 - 31.08.2018
+Hotel Scoica|Jupiter, Constanta, Romania|145|plaja, cluburi de noapte|01.09.2018 - 30.09.2018
+Hotel Agnes|Bucuresti, Bucuresti, Romania|120|tur cultural, cluburi de noapte|01.01.2018 - 31.12.2019
+Hotel Vox Maris|Costinesti, Constanta, Romania|180|plaja, cluburi de noapte|30.05.2018 - 30.09.2018
+Hotel Radisson|Cluj-Napoca, Cluj, Romania|200|tur cultural, Untold|01.07.2018 - 31.07.2018
+Pensiunea Mara|Turda, Cluj, Romania|90|salina, tur cultural, drumetii|01.05.2018 - 30.09.2018
+Hotel Class|Constanta, Constanta, Romania|180|tur cultural, plaja, cluburi de noapte|01.06.2018 - 15.09.2018

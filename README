@@ -1,0 +1,60 @@
+*********************************	README	***********************************
+
+Aplicatia Java s-a vrut a fi cat mai user-friendly, motiv pentru care am ales 
+sa afisez cat mai multe detalii posibile in interactiunea cu clientii.
+
+In startul aplicatiei, sunt parsate din fisierul de input informatiile despre 
+ofertele existente. Campurile sunt despartite prin pipe ("|").
+
+Primul camp este numele locatiei, al doilea este localizarea - formata din 
+oras, judet, tara, separate prin ", ", al treilea este pretul in lei, al 
+patrulea este lista de activitati, separate prin ", " si ultimul este 
+perioada ofertei, de forma "dd.mm.yyyy - dd.mm.yyyy".
+
+Odata ofertele stocate in aplicatie, incepe interactiunea cu clientul. 
+Acesta poate alege din variantele:
+	i. info - care afiseaza toate informatiile despre o anumita locatie
+	ceruta ulterior
+
+	ii. top5 - care afiseaza top 5 cele mai ieftine oferte din orasul, 
+	judetul sau tara cerute ulterior si din perioada introdusa tot de 
+	utilizator
+
+	iii. ten-day - care afiseaza informatiile despre oferta unde se 
+	poate practica cel mai ieftin o activitate pe parcursul a zece zile 
+	si suma totala
+
+	iv. exit - care inchide aplicatia.
+
+Toate detaliile introduse de utilizator ca raspuns la cererile aplicatiei sunt 
+verificate la parsare, iar in caz de eroare sunt afisate mesaje in consecinta 
+si se reia bucla de la intrarea in aplicatie.
+
+Am lucrat cu sirurile de caractere mereu formatate prin metoda toLowerCase() 
+pentru a nu exista probleme de case-sensitiveness.
+
+Top 5 al ofertelor dintr-un oras a fost facut si pentru a incuraja clientul 
+sa isi ajusteze putin perioada de deplasare, astfel ca sunt introduse si 
+toate ofertele care se suprapun doar partial cu perioada aleasa. Astfel ca, 
+top 5 nu va fi neaparat alcatuit din 5 oferte, ci si din toate cele care se 
+suprapun pe perioada aleasa partial si au preturi mai bune decat primele 5 
+care se suprapun complet.
+
+Am ales stocarea locatiilor, oraselor, judetelor si tarilor printr-un hashmap 
+cu cheia prima litera pentru acces mai rapid, hash ce poate fi ajustat la 
+primele 2-3-n litere in cazul introducerii foarte multor inregistrari.
+
+Structura ierarhica a fost alcatuita prin mostenire (locatie < oras < judet <
+tara) si pot fi adaugate usor sate sau comune care sa extinda un judet, de 
+exemplu.
+
+Nu am folosit liste, ci seturi ordonate crescator dupa nume sau dupa pret 
+(in functie de caz) pentru a dura mai putin accesul la informatii in timpul 
+interactiunii cu clientul (chiar daca timpul de inserare este mai mare - 
+inserarea se face o data, la inceput doar). In aplicatia finala, s-ar putea 
+implementa si cautarea binara pentru eficientizare (dureaza peste timpul de 
+3-4 ore cu totul).
+
+Am atasat si un minitest pentru aplicatie.
+
+OBSERVATIE: Am presupus input-ul cu ofertele mereu corect.
